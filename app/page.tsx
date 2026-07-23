@@ -2,11 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 
+const asset = (path: string) =>
+  `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
+
 const projects = [
-  { id: "01", name: "Casa Dosel", place: "Tigre, BA", year: "2025", type: "Residencial", image: "/projects/casa-dosel.jpg", text: "Una casa que no ocupa el bosque: lo continúa. Hormigón pigmentado, madera y patios escalonados regulan la luz y la intimidad." },
-  { id: "02", name: "Patio Rojo", place: "Mendoza", year: "2024", type: "Hospitalidad", image: "/projects/patio-rojo.jpg", text: "Muros minerales y agua trazan un microclima silencioso. Cada arco encuadra una hora distinta del paisaje." },
-  { id: "03", name: "Casa Umbra", place: "Punta del Este", year: "2024", type: "Residencial", image: "/projects/casa-umbra.jpg", text: "Un gran techo de madera reúne las escenas domésticas. La sombra se vuelve materia y el jardín, una habitación más." },
-  { id: "04", name: "Casa Curva", place: "San Isidro, BA", year: "2023", type: "Residencial", image: "/projects/casa-curva.jpg", text: "La envolvente curva suaviza el límite urbano y conduce hacia un corazón vegetal protegido." },
+  { id: "01", name: "Casa Dosel", place: "Tigre, BA", year: "2025", type: "Residencial", image: asset("/projects/casa-dosel.jpg"), text: "Una casa que no ocupa el bosque: lo continúa. Hormigón pigmentado, madera y patios escalonados regulan la luz y la intimidad." },
+  { id: "02", name: "Patio Rojo", place: "Mendoza", year: "2024", type: "Hospitalidad", image: asset("/projects/patio-rojo.jpg"), text: "Muros minerales y agua trazan un microclima silencioso. Cada arco encuadra una hora distinta del paisaje." },
+  { id: "03", name: "Casa Umbra", place: "Punta del Este", year: "2024", type: "Residencial", image: asset("/projects/casa-umbra.jpg"), text: "Un gran techo de madera reúne las escenas domésticas. La sombra se vuelve materia y el jardín, una habitación más." },
+  { id: "04", name: "Casa Curva", place: "San Isidro, BA", year: "2023", type: "Residencial", image: asset("/projects/casa-curva.jpg"), text: "La envolvente curva suaviza el límite urbano y conduce hacia un corazón vegetal protegido." },
 ];
 
 const services = [
@@ -51,7 +54,7 @@ export default function Home() {
       </div>}
 
       <section className="hero" id="inicio" ref={heroRef}>
-        <div className="hero-image"><img src="/projects/casa-dosel.jpg" alt="Casa Dosel integrada en un paisaje frondoso" /></div>
+        <div className="hero-image"><img src={asset("/projects/casa-dosel.jpg")} alt="Casa Dosel integrada en un paisaje frondoso" /></div>
         <div className="hero-grid" />
         <div className="hero-top"><span>ESTUDIO DE ARQUITECTURA</span><span>34°35′S / 58°23′O</span></div>
         <h1><span>ESPACIO</span><em>puro</em></h1>
@@ -104,7 +107,7 @@ export default function Home() {
           </div>
         </div>
         <div className="material-image">
-          <img src={["/projects/comedor-orbita.jpg", "/projects/patio-rojo.jpg", "/projects/bano-ambar.jpg"][material]} alt="Exploración material" />
+          <img src={[asset("/projects/comedor-orbita.jpg"), asset("/projects/patio-rojo.jpg"), asset("/projects/bano-ambar.jpg")][material]} alt="Exploración material" />
           <span>{["01 / CALIDEZ", "02 / TIERRA", "03 / LUZ"][material]}</span>
         </div>
       </section>
@@ -126,7 +129,7 @@ export default function Home() {
       </section>
 
       <section className="contact" id="contacto">
-        <img src="/projects/refugio-linde.jpg" alt="" />
+        <img src={asset("/projects/refugio-linde.jpg")} alt="" />
         <div className="contact-overlay" />
         <span className="section-tag">[06 — HABLEMOS]</span>
         <h2>¿CONSTRUIMOS<br /><em>algo puro?</em></h2>
